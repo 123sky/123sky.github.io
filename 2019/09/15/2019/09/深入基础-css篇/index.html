@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>深入基础-css篇 - chenjp`s blog</title>
+
+
+    <meta name="description" content="盒模型。 BFC块级格式化上下文。 布局。局中布局、三栏布局。 弹性布局。 伪类与为元素。 清除浮动。 单位。 百分比参照。">
+<meta name="keywords" content="css,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入基础-css篇">
+<meta property="og:url" content="http://yoursite.com/2019/09/15/2019/09/深入基础-css篇/index.html">
+<meta property="og:site_name" content="chenjp`s blog">
+<meta property="og:description" content="盒模型。 BFC块级格式化上下文。 布局。局中布局、三栏布局。 弹性布局。 伪类与为元素。 清除浮动。 单位。 百分比参照。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/深入基础.jpg">
+<meta property="og:updated_time" content="2019-10-13T11:56:41.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入基础-css篇">
+<meta name="twitter:description" content="盒模型。 BFC块级格式化上下文。 布局。局中布局、三栏布局。 弹性布局。 伪类与为元素。 清除浮动。 单位。 百分比参照。">
+<meta name="twitter:image" content="http://yoursite.com/images/深入基础.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1064b9814d37cdecb6bb1b031a3bbfb7";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="深入基础-css篇" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-css篇">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/基础系列/css篇/">css篇</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1805 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                深入基础-css篇
+            
+        </h1>
+        <div class="content">
+            <ol>
+<li>盒模型。</li>
+<li>BFC块级格式化上下文。</li>
+<li>布局。局中布局、三栏布局。</li>
+<li>弹性布局。</li>
+<li>伪类与为元素。</li>
+<li>清除浮动。</li>
+<li>单位。</li>
+<li>百分比参照。</li>
+</ol>
+<a id="more"></a>
+
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>content+padding+border+margin</p>
+<h3 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h3><ul>
+<li>W3C 标准盒模型 width=content</li>
+<li>IE 盒模型 width = content+padding+border</li>
+</ul>
+<h3 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h3><ul>
+<li>content-box W3C 标准盒模型</li>
+<li>border-box IE 盒模型</li>
+</ul>
+<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>块级格式化上下文。<br>它是页面中的一块渲染区域，<br>有一套渲染规则，<br>它决定了其子元素将如何定位，<br>以及和其他元素的关系和相互作用。</p>
+<p>“封闭的大箱子”<br>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</p>
+<h3 id="触发"><a href="#触发" class="headerlink" title="触发"></a>触发</h3><ul>
+<li>body 根元素</li>
+<li>浮动元素：float 除 none 以外的值</li>
+<li>绝对定位元素：position (absolute、fixed)</li>
+<li>display 为 inline-block、table-cells、flex</li>
+<li>overflow 除了 visible 以外的值 (hidden、auto、scroll)</li>
+<li>弹性盒子 flex</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li>同一个 BFC 容器会发生折叠，不同 BFC 容器不会折叠</li>
+<li>清除浮动</li>
+<li>实现一列顶宽，另一列自适应布局</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"height: 100px;width: 100px;float: left;background: lightblue"</span>&gt;</span></span><br><span class="line">  我是一个左浮动的元素</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 200px; height: 200px;background: #eee"</span>&gt;</span></span><br><span class="line">  我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px;</span><br><span class="line">  background: #eee;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上边的代码将产生文字环绕效果。<br>将第二个元素添加 overflow:auto 实现一列定宽，另一列自适应布局。</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><h3 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h3><h4 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h4><ul>
+<li>定宽块状元素：margin auto</li>
+<li>行内元素：父元素 text-align:center</li>
+<li>非定宽块状元素：父容器 text-align:center，自身 display:inline</li>
+<li>父容器为相对定位，子元素绝对定位，left为50%，利用transform水平平移translateX(-50%)。</li>
+<li>父容器为相对定位，子元素绝对定位、定宽，left为50%，margin-left为居中元素宽度的一半。</li>
+<li>通用：父容器 flex 布局，justify-content:center</li>
+</ul>
+<h4 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h4><ul>
+<li>内联单行： line-height 等于 height</li>
+<li>内联多行：父容器 display:table。自身 display:table-cell；vertical-align:middle</li>
+<li>块状元素：父容器非 static，自身 absolute，top、bottom 为 0，margin:auto</li>
+<li>父容器为相对定位，子元素绝对定位，top为50%，利用transform垂直平移translateY(-50%)。</li>
+<li>通用： 父容器 flex，align-items:center</li>
+</ul>
+<h4 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h4><ul>
+<li>absolute + transform</li>
+<li>inline-bock + text-align + table-cell + vertical-align</li>
+<li>flex + justify-content + align-items</li>
+</ul>
+<h3 id="两列、三列布局"><a href="#两列、三列布局" class="headerlink" title="两列、三列布局"></a>两列、三列布局</h3><h4 id="float-margin"><a href="#float-margin" class="headerlink" title="float+margin"></a>float+margin</h4><p>注意顺序：先两侧，后中间。<br>这样就没有优先渲染你最重要的部分了。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sub"</span>&gt;</span>sub<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"extra"</span>&gt;</span>extra<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main"</span>&gt;</span>main<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.sub</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.extra</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">float</span>: right;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.main</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="position-margin"><a href="#position-margin" class="headerlink" title="position+margin"></a>position+margin</h4><p>无书 DOM 写顺序限制<br>如果中间栏含有最小宽度限制，或是含有宽度的内部元素，则浏览器窗口小到一定程度，主面板与侧栏会发生重叠。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main"</span>&gt;</span>main<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sub"</span>&gt;</span>sub<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"extra"</span>&gt;</span>extra<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.content</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.sub</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.extra</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.main</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><p>dom 顺序不可变。当中间区域小于两侧区域宽度时布局会错乱。限制 content 最小宽度。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main"</span>&gt;</span>main<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sub"</span>&gt;</span>sub<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"extra"</span>&gt;</span>extra<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.content</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.main</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">float</span>: left;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.sub</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">float</span>: left;</span><br><span class="line">  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">  <span class="hljs-attribute">left</span>: -<span class="hljs-number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.extra</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">float</span>: right;</span><br><span class="line">  <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">  <span class="hljs-attribute">right</span>: -<span class="hljs-number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main-wrap"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main"</span>&gt;</span></span><br><span class="line">      main</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sub"</span>&gt;</span>sub<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"extra"</span>&gt;</span>extra<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.main-wrap</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">float</span>: left;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.main</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">200px</span> <span class="hljs-number">0</span> <span class="hljs-number">290px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.sub</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">float</span>: left;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">290px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.extra</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">float</span>: left;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="flex-布局"><a href="#flex-布局" class="headerlink" title="flex 布局"></a>flex 布局</h4><h2 id="弹性布局-flex"><a href="#弹性布局-flex" class="headerlink" title="弹性布局 flex"></a>弹性布局 flex</h2><p>在 flex 为 1 的容器中，子元素 height：100%，但子元素内内容超过 100%后，子容器会大于 100%的 bug。通过 absolute 可以解决此问题。<br><a href="http://jsfiddle.net/poztin/MFHj7/1/" target="_blank" rel="noopener">参考链接</a></p>
+<h3 id="作用于父容器"><a href="#作用于父容器" class="headerlink" title="作用于父容器"></a>作用于父容器</h3><h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><h5 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h5><p>row<br>row-reverse<br>column<br>column-reverse</p>
+<h5 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h5><p>nowrap<br>wrap<br>wrap-reverse</p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>flex-start<br>center<br>flex-end<br>space-between<br>space-around</p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>flex-start<br>center<br>flex-end<br>baseline<br>stretch</p>
+<h4 id="align-content-（多跟轴线的对其方式）"><a href="#align-content-（多跟轴线的对其方式）" class="headerlink" title="align-content （多跟轴线的对其方式）"></a>align-content （多跟轴线的对其方式）</h4><p>flex-start<br>center<br>flex-end<br>space-between<br>space-around<br>stretch</p>
+<h3 id="作用于子元素"><a href="#作用于子元素" class="headerlink" title="作用于子元素"></a>作用于子元素</h3><h4 id="分支主题"><a href="#分支主题" class="headerlink" title="分支主题"></a>分支主题</h4><h5 id="order"><a href="#order" class="headerlink" title="order"></a>order</h5><p>数字越小越靠前</p>
+<h5 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h5><h6 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h6><p>默认值为 0，有空间也不占</p>
+<p>不为零时按占比分配大小</p>
+<h6 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h6><p>默认值为 1，空间不足时将缩小</p>
+<p>为零时不缩小</p>
+<p>一个为 1，一个为 2 的两个 div<br>缩小时值越大的缩小越快</p>
+<h6 id="flex-basic"><a href="#flex-basic" class="headerlink" title="flex-basic"></a>flex-basic</h6><h5 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h5><p>auto<br>flex-start<br>flex-end<br>center<br>baseline<br>stretch</p>
+<h2 id="伪类、伪元素"><a href="#伪类、伪元素" class="headerlink" title="伪类、伪元素"></a>伪类、伪元素</h2><h3 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h3><p>定义的是状态</p>
+<p>:root 选择文档的根元素，等同于 html 元素<br>:empty 选择没有子元素的元素<br>:target 选取当前活动的目标元素<br>:not(selector) 选择除 selector 元素意外的元素<br>:enabled 选择可用的表单元素<br>:disabled 选择禁用的表单元素<br>:checked 选择被选中的表单元素<br>:nth-child(n) 匹配父元素下指定子元素，在所有子元素中排序第 n<br>:nth-last-child(n) 匹配父元素下指定子元素，在所有子元素中排序第 n，从后向前数<br>:nth-child(odd) 、 :nth-child(even) 、 :nth-child(3n+1)<br>:first-child 、 :last-child 、 :only-child<br>:nth-of-type(n) 匹配父元素下指定子元素，在同类子元素中排序第 n<br>:nth-last-of-type(n) 匹配父元素下指定子元素，在同类子元素中排序第 n，从后向前数<br>:nth-of-type(odd) 、 :nth-of-type(even) 、 :nth-of-type(3n+1)<br>:first-of-type 、 :last-of-type 、 :only-of-type</p>
+<h3 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h3><p>不存在于 DOM 树中的虚拟元素，它们可以像正常的 html 元素一样定义 css，但无法使用 JavaScript 获取。</p>
+<p>::after 已选中元素的最后一个子元素<br>::before 已选中元素的第一个子元素<br>::first-letter 选中某个款级元素的第一行的第一个字母<br>::first-line 匹配某个块级元素的第一行<br>::selection 匹配用户划词时的高亮部分</p>
+<h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><h3 id="clear"><a href="#clear" class="headerlink" title="clear"></a>clear</h3><p>作用于和浮动元素同级的元素</p>
+<h3 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h3><p>作用于父级元素</p>
+<h3 id="伪元素-1"><a href="#伪元素-1" class="headerlink" title="伪元素"></a>伪元素</h3><p>作用于父级元素</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.clearFloat</span><span class="hljs-selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;</span><br><span class="line">  <span class="hljs-attribute">clear</span>: both;</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h2><h3 id="px"><a href="#px" class="headerlink" title="px"></a>px</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,initial-scale=1.0"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>content 属性值 :</p>
+<p>width:可视区域的宽度，值可为数字或关键词 device-width<br>height:可视区域的高度，值可为数字或关键词 device-height<br>intial-scale:页面首次被显示是可视区域的缩放级别，取值 1.0 则页面按实际尺寸显示，无任何缩放<br>maximum-scale=1.0, minimum-scale=1.0;可视区域的缩放级别，<br>maximum-scale 用户可将页面放大的程序，1.0 将禁止用户放大到实际尺寸之上。<br>user-scalable:是否可对页面进行缩放，no 禁止缩放</p>
+<h3 id="em"><a href="#em" class="headerlink" title="em"></a>em</h3><h4 id="相对于本身或父容器字体大小"><a href="#相对于本身或父容器字体大小" class="headerlink" title="相对于本身或父容器字体大小"></a>相对于本身或父容器字体大小</h4><h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fontFun = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> docEl = <span class="hljs-built_in">document</span>.documentElement;</span><br><span class="line">  <span class="hljs-keyword">let</span> resizeEvt =</span><br><span class="line">    <span class="hljs-string">"orientationchange"</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">window</span> ? <span class="hljs-string">"orientationchange"</span> : <span class="hljs-string">"resize"</span>;</span><br><span class="line">  <span class="hljs-keyword">const</span> recalc = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> clientWidth = docEl.clientWidth;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!clientWidth) <span class="hljs-keyword">return</span>;</span><br><span class="line">    docEl.style.fontSize = <span class="hljs-number">100</span> * (clientWidth / <span class="hljs-number">750</span>) + <span class="hljs-string">"px"</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">document</span>.addEventListener) <span class="hljs-keyword">return</span>;</span><br><span class="line">  <span class="hljs-built_in">window</span>.addEventListener(resizeEvt, recalc, <span class="hljs-literal">false</span>);</span><br><span class="line">  <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">"pageshow"</span>, recalc, <span class="hljs-literal">false</span>);</span><br><span class="line">  <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"DOMContentLoaded"</span>, recalc, <span class="hljs-literal">false</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="相对于-HTML-字体大小"><a href="#相对于-HTML-字体大小" class="headerlink" title="相对于 HTML 字体大小"></a>相对于 HTML 字体大小</h4><h3 id="rpx"><a href="#rpx" class="headerlink" title="rpx"></a>rpx</h3><h4 id="小程序，按设计稿尺寸即可"><a href="#小程序，按设计稿尺寸即可" class="headerlink" title="小程序，按设计稿尺寸即可"></a>小程序，按设计稿尺寸即可</h4><h2 id="百分比参照"><a href="#百分比参照" class="headerlink" title="百分比参照"></a>百分比参照</h2><p>margin/padding 的 top/right/bottom/left 百分比值都根据父容器 content 的宽度决定</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/css/">css</a>, <a class="has-link-grey -link" href="/tags/面试/">面试</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay-qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/weixin-qrcode.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">深入基础-js篇-作用域与闭包</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/15/2019/09/深入基础-js篇-执行机制/">
+                <span class="level-item">深入基础-js篇-执行机制</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '846dab41953419681b3e70df0e20b357',
+		owner: '123sky',
+		repo: 'blog',
+		oauth: {
+			client_id: 'f869a0bd3d2498f1db9f',
+			client_secret: 'b527272626a86eac38460c0a75d49055ed7f6d9f',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Chen Jianpeng">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Chen Jianpeng
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Front End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        30
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/123sky" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/123sky">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="http://weibo.com/3048860577">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Zhihu" href="https://www.zhihu.com/people/ke-jing-ming-68">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#盒模型">
+        <span class="has-mr-6">1</span>
+        <span>盒模型</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#类别">
+        <span class="has-mr-6">1.1</span>
+        <span>类别</span>
+        </a></li><li>
+        <a class="is-flex" href="#box-sizing">
+        <span class="has-mr-6">1.2</span>
+        <span>box-sizing</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#BFC">
+        <span class="has-mr-6">2</span>
+        <span>BFC</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#触发">
+        <span class="has-mr-6">2.1</span>
+        <span>触发</span>
+        </a></li><li>
+        <a class="is-flex" href="#作用">
+        <span class="has-mr-6">2.2</span>
+        <span>作用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#布局">
+        <span class="has-mr-6">3</span>
+        <span>布局</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#居中">
+        <span class="has-mr-6">3.1</span>
+        <span>居中</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#水平居中">
+        <span class="has-mr-6">3.1.1</span>
+        <span>水平居中</span>
+        </a></li><li>
+        <a class="is-flex" href="#垂直居中">
+        <span class="has-mr-6">3.1.2</span>
+        <span>垂直居中</span>
+        </a></li><li>
+        <a class="is-flex" href="#水平垂直居中">
+        <span class="has-mr-6">3.1.3</span>
+        <span>水平垂直居中</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#两列、三列布局">
+        <span class="has-mr-6">3.2</span>
+        <span>两列、三列布局</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#float-margin">
+        <span class="has-mr-6">3.2.1</span>
+        <span>float+margin</span>
+        </a></li><li>
+        <a class="is-flex" href="#position-margin">
+        <span class="has-mr-6">3.2.2</span>
+        <span>position+margin</span>
+        </a></li><li>
+        <a class="is-flex" href="#圣杯布局">
+        <span class="has-mr-6">3.2.3</span>
+        <span>圣杯布局</span>
+        </a></li><li>
+        <a class="is-flex" href="#双飞翼布局">
+        <span class="has-mr-6">3.2.4</span>
+        <span>双飞翼布局</span>
+        </a></li><li>
+        <a class="is-flex" href="#flex-布局">
+        <span class="has-mr-6">3.2.5</span>
+        <span>flex 布局</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#弹性布局-flex">
+        <span class="has-mr-6">4</span>
+        <span>弹性布局 flex</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#作用于父容器">
+        <span class="has-mr-6">4.1</span>
+        <span>作用于父容器</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#flex-flow">
+        <span class="has-mr-6">4.1.1</span>
+        <span>flex-flow</span>
+        </a></li><li>
+        <a class="is-flex" href="#justify-content">
+        <span class="has-mr-6">4.1.2</span>
+        <span>justify-content</span>
+        </a></li><li>
+        <a class="is-flex" href="#align-items">
+        <span class="has-mr-6">4.1.3</span>
+        <span>align-items</span>
+        </a></li><li>
+        <a class="is-flex" href="#align-content-（多跟轴线的对其方式）">
+        <span class="has-mr-6">4.1.4</span>
+        <span>align-content （多跟轴线的对其方式）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#作用于子元素">
+        <span class="has-mr-6">4.2</span>
+        <span>作用于子元素</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#分支主题">
+        <span class="has-mr-6">4.2.1</span>
+        <span>分支主题</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#伪类、伪元素">
+        <span class="has-mr-6">5</span>
+        <span>伪类、伪元素</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#伪类">
+        <span class="has-mr-6">5.1</span>
+        <span>伪类</span>
+        </a></li><li>
+        <a class="is-flex" href="#伪元素">
+        <span class="has-mr-6">5.2</span>
+        <span>伪元素</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#清除浮动">
+        <span class="has-mr-6">6</span>
+        <span>清除浮动</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#clear">
+        <span class="has-mr-6">6.1</span>
+        <span>clear</span>
+        </a></li><li>
+        <a class="is-flex" href="#overflow">
+        <span class="has-mr-6">6.2</span>
+        <span>overflow</span>
+        </a></li><li>
+        <a class="is-flex" href="#伪元素-1">
+        <span class="has-mr-6">6.3</span>
+        <span>伪元素</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#单位">
+        <span class="has-mr-6">7</span>
+        <span>单位</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#px">
+        <span class="has-mr-6">7.1</span>
+        <span>px</span>
+        </a></li><li>
+        <a class="is-flex" href="#em">
+        <span class="has-mr-6">7.2</span>
+        <span>em</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#相对于本身或父容器字体大小">
+        <span class="has-mr-6">7.2.1</span>
+        <span>相对于本身或父容器字体大小</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#rem">
+        <span class="has-mr-6">7.3</span>
+        <span>rem</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#相对于-HTML-字体大小">
+        <span class="has-mr-6">7.3.1</span>
+        <span>相对于 HTML 字体大小</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#rpx">
+        <span class="has-mr-6">7.4</span>
+        <span>rpx</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#小程序，按设计稿尺寸即可">
+        <span class="has-mr-6">7.4.1</span>
+        <span>小程序，按设计稿尺寸即可</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#百分比参照">
+        <span class="has-mr-6">8</span>
+        <span>百分比参照</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/123sky" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">123sky</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/基础系列/">
+            <span class="level-start">
+                <span class="level-item">基础系列</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/基础系列/css篇/">
+            <span class="level-start">
+                <span class="level-item">css篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/nodejs/">
+            <span class="level-start">
+                <span class="level-item">nodejs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/前端框架篇/">
+            <span class="level-start">
+                <span class="level-item">前端框架篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/">
+            <span class="level-start">
+                <span class="level-item">深入基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/深入基础/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/vue篇/">
+            <span class="level-start">
+                <span class="level-item">vue篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/规范篇/">
+            <span class="level-start">
+                <span class="level-item">规范篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/阶段总结/">
+            <span class="level-start">
+                <span class="level-item">阶段总结</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/阶段总结/项目开发/">
+            <span class="level-start">
+                <span class="level-item">项目开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/js/" style="font-size: 12px;">js</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/组件/" style="font-size: 12px;">组件</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="深入基础-css篇" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Chen Jianpeng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>编码规范之eslint - chenjp`s blog</title>
+
+
+    <meta name="description" content="在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。总之就是为了让别人看自己写的代码时，尽量不产生抵触情绪🙈。">
+<meta name="keywords" content="规范,eslint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编码规范之eslint">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/2018/01/编码规范之eslint/index.html">
+<meta property="og:site_name" content="chenjp`s blog">
+<meta property="og:description" content="在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。总之就是为了让别人看自己写的代码时，尽量不产生抵触情绪🙈。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/编码规范之eslint.jpg">
+<meta property="og:updated_time" content="2019-10-14T01:29:51.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编码规范之eslint">
+<meta name="twitter:description" content="在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。总之就是为了让别人看自己写的代码时，尽量不产生抵触情绪🙈。">
+<meta name="twitter:image" content="http://yoursite.com/images/编码规范之eslint.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1064b9814d37cdecb6bb1b031a3bbfb7";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="编码规范之eslint" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/编码规范之eslint.jpg" alt="编码规范之eslint">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-13T03:52:28.000Z">2018-01-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/深入基础/">深入基础</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/深入基础/规范篇/">规范篇</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1363 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                编码规范之eslint
+            
+        </h1>
+        <div class="content">
+            <p>在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。总之就是为了让别人看自己写的代码时，尽量不产生抵触情绪🙈。</p>
+<a id="more"></a>
+
+<p><strong>首先了解一下基本知识。</strong></p>
+<ol>
+<li><p>eslint 结合 webpack 使用时，配置相关规则的文件在项目根目录的.eslintrc.js 文件中。</p>
+</li>
+<li><p>当然可以针对某种情况单独配置规则。例如下面的代码，规则默认是 new 一个对象必须赋值给一个变量，但是这里是一个特殊情况，需要特殊处理，所以通过注释的方式忽略掉。但是请不要乱用，通常还是要遵守统一规则的。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/* eslint no-new: 0 */</span></span><br><span class="line"><span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">"#app"</span>,</span><br><span class="line">  router,</span><br><span class="line">  template: <span class="hljs-string">"&lt;App/&gt;"</span>,</span><br><span class="line">  components: &#123; App &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一些参数的含义</p>
+<p>“off” 或 0 - 关闭规则<br>“warn” 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)<br>“error”或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)</p>
+</li>
+<li><p>项目中使用标准配置，<a href="https://github.com/standard/standard/blob/master/docs/RULES-zhcn.md" target="_blank" rel="noopener">标准配置文档</a></p>
+</li>
+</ol>
+<p><strong>下面就来看一下，我在 utry-vue-doc 中都遇到了哪些问题吧。</strong></p>
+<p>注：下面的设置为 0 的是我认为没必要的，设置为 2 的是我认为应该检查的。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 箭头函数的参数使用圆括号</span></span><br><span class="line"><span class="hljs-string">'arrow-parens'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// production下不允许有debugger</span></span><br><span class="line"><span class="hljs-string">'no-debugger'</span>: process.env.NODE_ENV === <span class="hljs-string">'production'</span> ? <span class="hljs-number">2</span> : <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// production下不允许有console</span></span><br><span class="line"><span class="hljs-string">'no-console'</span>: process.env.NODE_ENV === <span class="hljs-string">'production'</span> ? <span class="hljs-number">2</span> : <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁用不必要的分号</span></span><br><span class="line"><span class="hljs-string">'no-extra-semi'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// (默认) 要求在语句末尾使用分号</span></span><br><span class="line"><span class="hljs-string">'semi'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制分号前后有空格</span></span><br><span class="line"><span class="hljs-string">'semi-spacing'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 函数圆括号之前有一个空格</span></span><br><span class="line"><span class="hljs-string">'space-before-function-paren'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 语句块之前的空格</span></span><br><span class="line"><span class="hljs-string">'space-before-blocks'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制在对象字面量的键和值之间使用一致的空格</span></span><br><span class="line"><span class="hljs-string">'key-spacing'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制使用一致的反勾号、双引号或单引号</span></span><br><span class="line"><span class="hljs-string">'quotes'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制将对象的属性放在不同的行上</span></span><br><span class="line"><span class="hljs-comment">// 建议复杂的对象还是放在不同行上</span></span><br><span class="line"><span class="hljs-string">'object-property-newline'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制使用一致的缩进,2个空格。switch语句缩进设置</span></span><br><span class="line"><span class="hljs-string">'indent'</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, &#123; <span class="hljs-string">"SwitchCase"</span>: <span class="hljs-number">1</span> &#125;],</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 当最后一个元素或属性与闭括号 ] 或 &#125; 在 不同的行时，</span></span><br><span class="line"><span class="hljs-comment">// 允许（但不要求）使用拖尾逗号；</span></span><br><span class="line"><span class="hljs-comment">// 当在 同一行时，禁止使用拖尾逗号。</span></span><br><span class="line"><span class="hljs-string">'comma-dangle'</span>: [<span class="hljs-number">2</span>,<span class="hljs-string">'only-multiline'</span>],</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制关键字周围空格的一致性</span></span><br><span class="line"><span class="hljs-comment">// 关键字前后都要有空格</span></span><br><span class="line"><span class="hljs-string">'keyword-spacing'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 要求中缀操作符周围有空格</span></span><br><span class="line"><span class="hljs-string">'space-infix-ops'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制在逗号周围使用空格</span></span><br><span class="line"><span class="hljs-comment">// 逗号前边没空格，逗号后面使用一个或多个空格</span></span><br><span class="line"><span class="hljs-string">'comma-spacing'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁止出现多个空格</span></span><br><span class="line"><span class="hljs-string">'no-multi-spaces'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁止所有tab</span></span><br><span class="line"><span class="hljs-string">'no-tabs'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 要求使用 === 和 !==</span></span><br><span class="line"><span class="hljs-string">'eqeqeq'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 逗号风格</span></span><br><span class="line"><span class="hljs-comment">// 要求逗号放在数组元素、对象属性或变量声明之后，且在同一行</span></span><br><span class="line"><span class="hljs-string">'comma-style'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁用不必要的转义，什么叫不必要的转义这个还真不知道是啥意思</span></span><br><span class="line"><span class="hljs-string">'no-useless-escape'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 块内填充（块语句以空行开始并且以空行结束）</span></span><br><span class="line"><span class="hljs-string">'padded-blocks'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁止在对象字面量中出现重复的键</span></span><br><span class="line"><span class="hljs-string">'no-dupe-keys'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 强制在花括号中使用一致的空格。</span></span><br><span class="line"><span class="hljs-comment">// 左右花括号在同一行时，左花括号右边有一个空格,并且右花括号左边有一个空格。</span></span><br><span class="line"><span class="hljs-string">'object-curly-spacing'</span>: [<span class="hljs-number">2</span>,<span class="hljs-string">'always'</span>],</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 要求使用骆驼拼写法</span></span><br><span class="line"><span class="hljs-string">'camelcase'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// $&#123;variable&#125; 应该在两个 (`)之间，不应该在两个(')或(")之间</span></span><br><span class="line"><span class="hljs-string">'no-template-curly-in-string'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 在注释有空白</span></span><br><span class="line"><span class="hljs-string">'spaced-comment'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁用行尾空白</span></span><br><span class="line"><span class="hljs-string">'no-trailing-spaces'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 大括号风格要求</span></span><br><span class="line"><span class="hljs-comment">// 默认one true brace style。</span></span><br><span class="line"><span class="hljs-comment">// 允许块的开括号和闭括号在 同一行</span></span><br><span class="line"><span class="hljs-string">'brace-style'</span>: [<span class="hljs-number">2</span>, <span class="hljs-string">"1tbs"</span>, &#123; <span class="hljs-string">"allowSingleLine"</span>: <span class="hljs-literal">true</span> &#125;],</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁止在返回语句中赋值</span></span><br><span class="line"><span class="hljs-string">'no-return-assign'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 要求遵循大括号约定,即使代码块只有一条语句时，仍需要加大括号</span></span><br><span class="line"><span class="hljs-string">'curly'</span>: <span class="hljs-number">2</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁用一成不变的循环条件</span></span><br><span class="line"><span class="hljs-string">'no-unmodified-loop-condition'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 禁止或强制圆括号内的空格。(默认) 强制圆括号内没有空格</span></span><br><span class="line"><span class="hljs-string">'space-in-parens'</span>: <span class="hljs-number">0</span>,</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// new一个object必须赋值给一个变量</span></span><br><span class="line"><span class="hljs-string">'no-new'</span>: <span class="hljs-number">2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>大家如果有什么疑问也可以到<a href="http://eslint.cn/docs/rules/" target="_blank" rel="noopener">eslint 官网</a>查询。（搜索框里搜索一下，很多例子，一看就懂了）。</p>
+</li>
+<li><p>还想说一下编辑器一般都会有问题面板，如果有报问题，还是修改一下的比较好。编辑器也有自动整理代码格式的功能，一般是 ctrl+shift+f，会把代码结构整理下，但是有的时候也会有意想不到的结果，所以慎用吧。</p>
+</li>
+<li><p>不规范的代码往往是因为从其他地方粘贴过来导致的，所以粘贴之后还是整理一下比较好。</p>
+</li>
+<li><p>整理后的代码我新开了一个分支叫 sortOut，有需要的也可以看一下。</p>
+</li>
+<li><p>一些个人的观点，请大家多多指教吧，为了公司前端开发有一个更好的规范，为了少一些坑，哈哈哈哈。</p>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/eslint/">eslint</a>, <a class="has-link-grey -link" href="/tags/规范/">规范</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay-qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/weixin-qrcode.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/01/15/2018/01/vue之table组件的开发/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">vue之table组件的开发</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/01/13/2018/01/前端开发规范/">
+                <span class="level-item">前端开发规范</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'fae4a0bab77a04ec9a97d310193a1365',
+		owner: '123sky',
+		repo: 'blog',
+		oauth: {
+			client_id: 'f869a0bd3d2498f1db9f',
+			client_secret: 'b527272626a86eac38460c0a75d49055ed7f6d9f',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Chen Jianpeng">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Chen Jianpeng
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Front End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        30
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/123sky" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/123sky">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="http://weibo.com/3048860577">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Zhihu" href="https://www.zhihu.com/people/ke-jing-ming-68">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/123sky" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">123sky</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/基础系列/">
+            <span class="level-start">
+                <span class="level-item">基础系列</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/基础系列/css篇/">
+            <span class="level-start">
+                <span class="level-item">css篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/nodejs/">
+            <span class="level-start">
+                <span class="level-item">nodejs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/前端框架篇/">
+            <span class="level-start">
+                <span class="level-item">前端框架篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/">
+            <span class="level-start">
+                <span class="level-item">深入基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/深入基础/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/vue篇/">
+            <span class="level-start">
+                <span class="level-item">vue篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/规范篇/">
+            <span class="level-start">
+                <span class="level-item">规范篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/阶段总结/">
+            <span class="level-start">
+                <span class="level-item">阶段总结</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/阶段总结/项目开发/">
+            <span class="level-start">
+                <span class="level-item">项目开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/js/" style="font-size: 12px;">js</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/组件/" style="font-size: 12px;">组件</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="编码规范之eslint" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Chen Jianpeng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

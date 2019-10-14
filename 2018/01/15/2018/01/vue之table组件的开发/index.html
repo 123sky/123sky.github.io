@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>vue之table组件的开发 - chenjp`s blog</title>
+
+
+    <meta name="description" content="开发一套 vue 的 table 组件，通过零零散散的时间算是基本上写完了。今天就来总结一下吧。">
+<meta name="keywords" content="vue,组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue之table组件的开发">
+<meta property="og:url" content="http://yoursite.com/2018/01/15/2018/01/vue之table组件的开发/index.html">
+<meta property="og:site_name" content="chenjp`s blog">
+<meta property="og:description" content="开发一套 vue 的 table 组件，通过零零散散的时间算是基本上写完了。今天就来总结一下吧。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/vue之table组件的开发.jpg">
+<meta property="og:updated_time" content="2019-10-14T01:30:53.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue之table组件的开发">
+<meta name="twitter:description" content="开发一套 vue 的 table 组件，通过零零散散的时间算是基本上写完了。今天就来总结一下吧。">
+<meta name="twitter:image" content="http://yoursite.com/images/vue之table组件的开发.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1064b9814d37cdecb6bb1b031a3bbfb7";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="vue之table组件的开发" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/vue之table组件的开发.jpg" alt="vue之table组件的开发">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-15T03:52:28.000Z">2018-01-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1941 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                vue之table组件的开发
+            
+        </h1>
+        <div class="content">
+            <p>开发一套 vue 的 table 组件，通过零零散散的时间算是基本上写完了。今天就来总结一下吧。</p>
+<a id="more"></a>
+
+<h2 id="设计文档"><a href="#设计文档" class="headerlink" title="设计文档"></a>设计文档</h2><p>为了开发过程中有一个参照，所以简单的写了一个计划。</p>
+<p><img src="jihua1.jpg" alt="设计计划文档"><br><img src="jihua2.jpg" alt="设计计划文档"><br><img src="jihua3.jpg" alt="设计计划文档"></p>
+<p>一个大而全的表格组件即将在我手中诞生了，想想就有点小激动。给领导看过之后说了一句话，让我受益匪浅，赶紧记录一下，大意就是“并不是大而全就好用，重要的是要让别人觉得好用，可以用。”</p>
+<p>反思总结了一下，重新整理计划，发现先前设计的搜索区域和工具区域其实很难控制好，因为不同的项目界面设计上差别很大，因此去除了这两部分。还有之前是想传 url 给组件，然后组件内部去请求后台数据，这样组也很难控制，还是传递数据给组件这样比较好。</p>
+<p>设计好了就开工吧</p>
+<h2 id="开发要点、难点"><a href="#开发要点、难点" class="headerlink" title="开发要点、难点"></a>开发要点、难点</h2><ol>
+<li><p>为完成表头表体分离的功能，表头和表体需要两个 table，这就需要维护每个表头和相应表体的对齐关系。</p>
+</li>
+<li><p>如果表体滚动时会产生滚动条，所以表头需要留出相应大小的位置。</p>
+</li>
+<li><p>为了完成列固定的功能，同样需要 table，又要维护对齐关系了，同时还要同步滚动。</p>
+</li>
+<li><p>表头分组功能数据处理。</p>
+</li>
+<li><p>行合并，列合并的功能。</p>
+</li>
+<li><p>异步请求导致出错。</p>
+</li>
+</ol>
+<h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>用户将表头信息 columns、表格数据 data、参数信息 options 传给组件。</p>
+<p>表头数据示例内容如下：title 显示的文字；type 表示这一列的类型，包括 selection（选择）、detail（详情）；key 对应数据，用于获取数据；width 设置当前列的宽度；aligin 内容对齐方式；fixed 固定列位置；sortable 是否可以排序；children 表示分组；render 渲染的内容，可以自定义处理内容。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">columns: [</span><br><span class="line">  &#123;</span><br><span class="line">    type: <span class="hljs-string">"selection"</span>,</span><br><span class="line">    key: <span class="hljs-string">"selection"</span>,</span><br><span class="line">    width: <span class="hljs-number">60</span>,</span><br><span class="line">    align: <span class="hljs-string">"center"</span>,</span><br><span class="line">    fixed: <span class="hljs-string">"left"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="hljs-string">"姓名"</span>,</span><br><span class="line">    key: <span class="hljs-string">"name"</span>,</span><br><span class="line">    sortable: <span class="hljs-literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="hljs-string">"其他"</span>,</span><br><span class="line">    fixed: <span class="hljs-string">"left"</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        title: <span class="hljs-string">"年龄"</span>,</span><br><span class="line">        key: <span class="hljs-string">"age"</span>,</span><br><span class="line">        sortable: <span class="hljs-function">(<span class="hljs-params">a, b, isAsc</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (isAsc) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> a - b;</span><br><span class="line">          &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> b - a;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        title: <span class="hljs-string">"地址"</span>,</span><br><span class="line">        key: <span class="hljs-string">"address"</span>,</span><br><span class="line">        children: [</span><br><span class="line">          &#123;</span><br><span class="line">            title: <span class="hljs-string">"街道"</span>,</span><br><span class="line">            key: <span class="hljs-string">"street"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            title: <span class="hljs-string">"街区"</span>,</span><br><span class="line">            key: <span class="hljs-string">"block"</span>,</span><br><span class="line">            children: [</span><br><span class="line">              &#123;</span><br><span class="line">                title: <span class="hljs-string">"楼栋"</span>,</span><br><span class="line">                key: <span class="hljs-string">"building"</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                title: <span class="hljs-string">"门牌号"</span>,</span><br><span class="line">                key: <span class="hljs-string">"number"</span></span><br><span class="line">              &#125;</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="hljs-string">"公司"</span>,</span><br><span class="line">    key: <span class="hljs-string">"company"</span>,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        title: <span class="hljs-string">"公司地址"</span>,</span><br><span class="line">        key: <span class="hljs-string">"companyAddress"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        title: <span class="hljs-string">"公司名称"</span>,</span><br><span class="line">        key: <span class="hljs-string">"companyName"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="hljs-string">"性别"</span>,</span><br><span class="line">    key: <span class="hljs-string">"gender"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    title: <span class="hljs-string">"操作"</span>,</span><br><span class="line">    key: <span class="hljs-string">"render"</span>,</span><br><span class="line">    type: <span class="hljs-string">"render"</span>,</span><br><span class="line">    fixed: <span class="hljs-string">"right"</span>,</span><br><span class="line">    width: <span class="hljs-number">210</span>,</span><br><span class="line">    render: <span class="hljs-function">(<span class="hljs-params">h, params</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> [</span><br><span class="line">        h(</span><br><span class="line">          <span class="hljs-string">"Button"</span>,</span><br><span class="line">          &#123;</span><br><span class="line">            props: &#123;</span><br><span class="line">              type: <span class="hljs-string">"primary"</span>,</span><br><span class="line">              size: <span class="hljs-string">"small"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            on: &#123;</span><br><span class="line">              click: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"你点击了删除按钮"</span>);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="hljs-string">"删除"</span></span><br><span class="line">        ),</span><br><span class="line">        h(</span><br><span class="line">          <span class="hljs-string">"Button"</span>,</span><br><span class="line">          &#123;</span><br><span class="line">            props: &#123;</span><br><span class="line">              type: <span class="hljs-string">"primary"</span>,</span><br><span class="line">              size: <span class="hljs-string">"small"</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="hljs-string">"修改"</span></span><br><span class="line">        )</span><br><span class="line">      ];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>options 参数的配置形式如下，height 表示表格的高度，minWidth 表示表格最小宽度，currentPage 当前页码，total 总条目数，pageSize 当前页大小，headBackground 表头背景色，stripe 斑马线颜色，bodyHover 悬浮颜色,rowRender 表体渲染函数，bodyEndRender 表格结尾</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">  height: <span class="hljs-number">263</span>,</span><br><span class="line">  minWidth: <span class="hljs-number">1500</span>,</span><br><span class="line">  currentPage: <span class="hljs-number">1</span>,</span><br><span class="line">  total: <span class="hljs-number">10</span>,</span><br><span class="line">  pageSize: <span class="hljs-number">10</span>,</span><br><span class="line">  headBackground: <span class="hljs-string">'#f5f7fa'</span>,</span><br><span class="line">  stripe: <span class="hljs-string">'#fafafa'</span>,</span><br><span class="line">  bodyHover: <span class="hljs-string">'#f5f7fa'</span>,</span><br><span class="line">  rowRender: <span class="hljs-function">(<span class="hljs-params">h, params</span>) =&gt;</span> &#123; &#125;,</span><br><span class="line">  bodyEndRender: <span class="hljs-function">(<span class="hljs-params">h, params</span>) =&gt;</span> &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>data 是数据，以一个对象数组的形式传入即可。</p>
+<h2 id="关键点举例分析"><a href="#关键点举例分析" class="headerlink" title="关键点举例分析"></a>关键点举例分析</h2><p>下面就几个关键点的代码进行解析</p>
+<h3 id="表头和相应表体的对齐关系"><a href="#表头和相应表体的对齐关系" class="headerlink" title="表头和相应表体的对齐关系"></a>表头和相应表体的对齐关系</h3><p>利用 colgroup 统一表头和表体每一列的宽度，如果有设置具体宽度那么使用设置的宽度，如果没有设置宽度，那么以表体每一列的宽度我基准进行设置。但要注意如果给表体设置了固定的高度，当产生滚动条时，表头也要预留出滚动条的宽度。具体代码如下</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">colgroup</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">col</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(item, index) in cloneColumns"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">:width</span>=<span class="hljs-string">"item.width?item.width:item.newWidth"</span></span></span><br><span class="line"><span class="hljs-tag">  /&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">col</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"scrollBarWidth"</span> <span class="hljs-attr">:width</span>=<span class="hljs-string">"scrollBarWidth"</span> /&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">colgroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> $td = <span class="hljs-keyword">this</span>.$refs.tableBodyEl.$el</span><br><span class="line">  .querySelectorAll(<span class="hljs-string">"tbody tr"</span>)[<span class="hljs-number">0</span>]</span><br><span class="line">  .querySelectorAll(<span class="hljs-string">"td"</span>);</span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; $td.length; i++) &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> width = <span class="hljs-built_in">parseInt</span>(getStyle($td[i], <span class="hljs-string">"width"</span>));</span><br><span class="line">  <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.cloneColumns[i].width) &#123;</span><br><span class="line">    Vue.set(<span class="hljs-keyword">this</span>.cloneColumns[i], <span class="hljs-string">"newWidth"</span>, width);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步滚动"><a href="#同步滚动" class="headerlink" title="同步滚动"></a>同步滚动</h3><p>业务需求是这样的，出现横向滚动条时某些列需要固定。实现效果如下</p>
+<p><img src="table_fixed.jpg" alt="列固定"></p>
+<p>遇到的问题主要是因为，三个表格在滚动时，滚动其中一个时另外两个需要同时随着滚动，但由于设置 scrollTop 时同样会触发 onScroll 事件，导致滚动时的卡顿。解决方案是在 mouseenter 里面绑定 scroll 事件，这样卡顿的问题就解决了。代码很简单，就不放了。</p>
+<h3 id="表头分组"><a href="#表头分组" class="headerlink" title="表头分组"></a>表头分组</h3><p>表格分组时计算 colspan rowspan 是一个难点。需求是要解析上面提到的 columns 数据，然后生成如下的表头</p>
+<p><img src="table_head.jpg" alt="表格头部示例"></p>
+<p>解决的思路是递归的方式，让父辈的 colspan 是子辈的和。深层遍历时记录深度，最上层的 level 就是 1，每深入一层，level 加 1。这样有子辈的 rowspan 就是 1，没有子辈的就填满空白就可以了。具体代码的实现如下</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 表格分组时计算colspan rowspan</span></span><br><span class="line"><span class="hljs-keyword">const</span> convertToRows = <span class="hljs-function">(<span class="hljs-params">originColumns, tag</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-comment">//表头colspan设置</span></span><br><span class="line">  <span class="hljs-keyword">const</span> traverse = <span class="hljs-function">(<span class="hljs-params">column, parent</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (parent) &#123;</span><br><span class="line">      column.level = parent.level + <span class="hljs-number">1</span>;</span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.maxLevel &lt; column.level) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.maxLevel = column.level;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (column.children) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> colSpan = <span class="hljs-number">0</span>;</span><br><span class="line">      column.children.forEach(<span class="hljs-function"><span class="hljs-params">subColumn</span> =&gt;</span> &#123;</span><br><span class="line">        traverse(subColumn, column);</span><br><span class="line">        colSpan += subColumn.colSpan;</span><br><span class="line">      &#125;);</span><br><span class="line">      column.colSpan = colSpan;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      column.colSpan = <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  originColumns.forEach(<span class="hljs-function"><span class="hljs-params">column</span> =&gt;</span> &#123;</span><br><span class="line">    column.level = <span class="hljs-number">1</span>;</span><br><span class="line">    traverse(column);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> rows = [];</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.maxLevel; i++) &#123;</span><br><span class="line">    rows.push([]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> allColumns = getAllColumns(originColumns);</span><br><span class="line"></span><br><span class="line">  allColumns.forEach(<span class="hljs-function">(<span class="hljs-params">column, index</span>) =&gt;</span> &#123;</span><br><span class="line">    column._index = index;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 表头rowspan设置</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (!column.children) &#123;</span><br><span class="line">      column.rowSpan = <span class="hljs-keyword">this</span>.maxLevel - column.level + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      column.rowSpan = <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 设置表体要显示的内容的key</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (tag === <span class="hljs-string">"center"</span> &amp;&amp; column.colSpan === <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.cloneColumns.push(column);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rows[column.level - <span class="hljs-number">1</span>].push(column);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> rows;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复杂业务需求"><a href="#复杂业务需求" class="headerlink" title="复杂业务需求"></a>复杂业务需求</h3><p>变态需求年年有，想做一个“万精油”一样的组件很难。先看一个这样的需求，实现效果如图所示。</p>
+<p><img src="table_render.jpg" alt="复杂表格，那就纯手工吧"></p>
+<p>这其实也是最近一个版本的需求，这个版本之前不知道改了多少版。这种定制化要求极高的就纯手工来吧，上代码：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">options5: &#123;</span><br><span class="line">  rowRender: <span class="hljs-function">(<span class="hljs-params">h, params</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> _this = <span class="hljs-keyword">this</span>;</span><br><span class="line">    <span class="hljs-keyword">let</span> renderHtml = [];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; params.rows.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> tempRender = [];</span><br><span class="line">      <span class="hljs-keyword">let</span> row = params.rows[i];</span><br><span class="line">      <span class="hljs-keyword">let</span> rowStyle = i % <span class="hljs-number">2</span> === <span class="hljs-number">0</span> ? <span class="hljs-string">"background-color:#eef7fc"</span> : <span class="hljs-literal">false</span>;</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; params.columns.length; j++) &#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> column = params.columns[j];</span><br><span class="line">        <span class="hljs-keyword">let</span> temp = <span class="hljs-literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">switch</span> (column.key) &#123;</span><br><span class="line">          <span class="hljs-keyword">case</span> <span class="hljs-string">"acceptanceTime"</span>:</span><br><span class="line">            temp = formatDate(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(row[column.key]), <span class="hljs-string">"YYYY-MM-dd hh:mm:ss"</span>);</span><br><span class="line">            tempRender.push(</span><br><span class="line">              h(<span class="hljs-string">"td"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">style</span>: rowStyle &#125; &#125;, [</span><br><span class="line">                h(<span class="hljs-string">"div"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">class</span>: <span class="hljs-string">"table-cell"</span> &#125; &#125;, temp)</span><br><span class="line">              ])</span><br><span class="line">            );</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">          <span class="hljs-keyword">case</span> <span class="hljs-string">"ownerPhone"</span>:</span><br><span class="line">            temp = row.ownerPhone + <span class="hljs-string">";"</span> + row.callinUser;</span><br><span class="line">            tempRender.push(</span><br><span class="line">              h(<span class="hljs-string">"td"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">style</span>: rowStyle &#125; &#125;, [</span><br><span class="line">                h(<span class="hljs-string">"div"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">class</span>: <span class="hljs-string">"table-cell"</span> &#125; &#125;, temp)</span><br><span class="line">              ])</span><br><span class="line">            );</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">          <span class="hljs-keyword">case</span> <span class="hljs-string">"voice"</span>:</span><br><span class="line">            tempRender.push(</span><br><span class="line">              h(<span class="hljs-string">"td"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">style</span>: rowStyle &#125; &#125;, [</span><br><span class="line">                h(</span><br><span class="line">                  <span class="hljs-string">"div"</span>,</span><br><span class="line">                  &#123;</span><br><span class="line">                    attrs: &#123; <span class="hljs-attr">class</span>: <span class="hljs-string">"table-cell"</span>, <span class="hljs-attr">style</span>: <span class="hljs-string">"cursor: pointer"</span> &#125;,</span><br><span class="line">                    on: &#123;</span><br><span class="line">                      click: (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>) </span>&#123;</span><br><span class="line">                        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                          _this.playVoice((i % <span class="hljs-number">4</span>) + <span class="hljs-number">1</span>);</span><br><span class="line">                        &#125;;</span><br><span class="line">                      &#125;)(i)</span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;,</span><br><span class="line">                  [h(<span class="hljs-string">"button"</span>, &#123;&#125;, <span class="hljs-string">"播放音频"</span>)]</span><br><span class="line">                )</span><br><span class="line">              ])</span><br><span class="line">            );</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">          <span class="hljs-keyword">default</span>:</span><br><span class="line">            temp = row[column.key];</span><br><span class="line">            tempRender.push(</span><br><span class="line">              h(<span class="hljs-string">"td"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">style</span>: rowStyle &#125; &#125;, [</span><br><span class="line">                h(<span class="hljs-string">"div"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">class</span>: <span class="hljs-string">"table-cell"</span> &#125; &#125;, temp)</span><br><span class="line">              ])</span><br><span class="line">            );</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      renderHtml.push(h(<span class="hljs-string">"tr"</span>, tempRender));</span><br><span class="line">      <span class="hljs-keyword">let</span> tempHtml = [</span><br><span class="line">        h(<span class="hljs-string">"td"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">colSpan</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">style</span>: rowStyle &#125; &#125;, [</span><br><span class="line">          h(<span class="hljs-string">"div"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">class</span>: <span class="hljs-string">"table-cell"</span> &#125; &#125;, [</span><br><span class="line">            h(<span class="hljs-string">"span"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">style</span>: <span class="hljs-string">"font-weight: bold"</span> &#125; &#125;, <span class="hljs-string">"移车地址："</span>),</span><br><span class="line">            row.movingPosition</span><br><span class="line">          ])</span><br><span class="line">        ])</span><br><span class="line">      ];</span><br><span class="line">      tempHtml.push(</span><br><span class="line">        h(<span class="hljs-string">"td"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">colSpan</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">style</span>: rowStyle &#125; &#125;, [</span><br><span class="line">          h(<span class="hljs-string">"div"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">class</span>: <span class="hljs-string">"table-cell"</span> &#125; &#125;, [</span><br><span class="line">            h(<span class="hljs-string">"span"</span>, &#123; <span class="hljs-attr">attrs</span>: &#123; <span class="hljs-attr">style</span>: <span class="hljs-string">"font-weight: bold"</span> &#125; &#125;, <span class="hljs-string">"备注："</span>),</span><br><span class="line">            row.remark</span><br><span class="line">          ])</span><br><span class="line">        ])</span><br><span class="line">      );</span><br><span class="line">      renderHtml.push(h(<span class="hljs-string">"tr"</span>, tempHtml));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> renderHtml;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里遇到了一个闭包的问题，播报语音时需要四种类型的语音循环匹配。循环中用到的 i 是同一个变量，所以导致最终都是播放的同一个语音。后来加了一个立即执行函数，解决了问题。后来发现其实声明 i 的时候用 let 就可以了，更简单。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第一次做组件开发，收获还是挺多的，包括对迭代，闭包等知识有了进一步的了解。结束。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/vue/">vue</a>, <a class="has-link-grey -link" href="/tags/组件/">组件</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay-qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/weixin-qrcode.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/01/16/2018/01/迎宾机器人项目/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">迎宾机器人项目</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/01/13/2018/01/编码规范之eslint/">
+                <span class="level-item">编码规范之eslint</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '854e6201a99483e9092c0279f24b8a27',
+		owner: '123sky',
+		repo: 'blog',
+		oauth: {
+			client_id: 'f869a0bd3d2498f1db9f',
+			client_secret: 'b527272626a86eac38460c0a75d49055ed7f6d9f',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Chen Jianpeng">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Chen Jianpeng
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Front End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        30
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/123sky" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/123sky">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="http://weibo.com/3048860577">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Zhihu" href="https://www.zhihu.com/people/ke-jing-ming-68">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#设计文档">
+        <span class="has-mr-6">1</span>
+        <span>设计文档</span>
+        </a></li><li>
+        <a class="is-flex" href="#开发要点、难点">
+        <span class="has-mr-6">2</span>
+        <span>开发要点、难点</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据准备">
+        <span class="has-mr-6">3</span>
+        <span>数据准备</span>
+        </a></li><li>
+        <a class="is-flex" href="#关键点举例分析">
+        <span class="has-mr-6">4</span>
+        <span>关键点举例分析</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#表头和相应表体的对齐关系">
+        <span class="has-mr-6">4.1</span>
+        <span>表头和相应表体的对齐关系</span>
+        </a></li><li>
+        <a class="is-flex" href="#同步滚动">
+        <span class="has-mr-6">4.2</span>
+        <span>同步滚动</span>
+        </a></li><li>
+        <a class="is-flex" href="#表头分组">
+        <span class="has-mr-6">4.3</span>
+        <span>表头分组</span>
+        </a></li><li>
+        <a class="is-flex" href="#复杂业务需求">
+        <span class="has-mr-6">4.4</span>
+        <span>复杂业务需求</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#总结">
+        <span class="has-mr-6">5</span>
+        <span>总结</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/123sky" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">123sky</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/基础系列/">
+            <span class="level-start">
+                <span class="level-item">基础系列</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/基础系列/css篇/">
+            <span class="level-start">
+                <span class="level-item">css篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/nodejs/">
+            <span class="level-start">
+                <span class="level-item">nodejs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/前端框架篇/">
+            <span class="level-start">
+                <span class="level-item">前端框架篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/">
+            <span class="level-start">
+                <span class="level-item">深入基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/深入基础/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/vue篇/">
+            <span class="level-start">
+                <span class="level-item">vue篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/规范篇/">
+            <span class="level-start">
+                <span class="level-item">规范篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/阶段总结/">
+            <span class="level-start">
+                <span class="level-item">阶段总结</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/阶段总结/项目开发/">
+            <span class="level-start">
+                <span class="level-item">项目开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/js/" style="font-size: 12px;">js</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/组件/" style="font-size: 12px;">组件</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="vue之table组件的开发" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Chen Jianpeng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>前端开发规范 - chenjp`s blog</title>
+
+
+    <meta name="description" content="为了避免低级 Bug，为了代码赏心悦目，为了少挖坑。">
+<meta name="keywords" content="规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发规范">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/2018/01/前端开发规范/index.html">
+<meta property="og:site_name" content="chenjp`s blog">
+<meta property="og:description" content="为了避免低级 Bug，为了代码赏心悦目，为了少挖坑。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/前端开发规范.jpg">
+<meta property="og:updated_time" content="2019-10-14T01:26:16.386Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端开发规范">
+<meta name="twitter:description" content="为了避免低级 Bug，为了代码赏心悦目，为了少挖坑。">
+<meta name="twitter:image" content="http://yoursite.com/images/前端开发规范.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1064b9814d37cdecb6bb1b031a3bbfb7";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="前端开发规范" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/前端开发规范.jpg" alt="前端开发规范">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-13T03:50:22.000Z">2018-01-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/深入基础/">深入基础</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/深入基础/规范篇/">规范篇</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1664 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                前端开发规范
+            
+        </h1>
+        <div class="content">
+            <p>为了避免低级 Bug，为了代码赏心悦目，为了少挖坑。</p>
+<a id="more"></a>
+
+<h2 id="HTML-篇"><a href="#HTML-篇" class="headerlink" title="HTML 篇"></a>HTML 篇</h2><ol>
+<li><p>空元素标签都不加 “/” 字符。</p>
+<p>空元素包括 area、base、br、col、command、embed、hr、img、input、keygen、link、meta、param、source、track、wbr。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./img/bg.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"背景图片"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>标签名、类名、标签属性用短横线。变量值采用驼峰。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">city-list</span></span></span><br><span class="line"><span class="hljs-tag">  <span class="hljs-attr">class</span>=<span class="hljs-string">"item-style"</span></span></span><br><span class="line"><span class="hljs-tag">  <span class="hljs-attr">data-name</span>=<span class="hljs-string">"name"</span></span></span><br><span class="line"><span class="hljs-tag">  <span class="hljs-attr">:class</span>=<span class="hljs-string">"activeClass"</span></span></span><br><span class="line"><span class="hljs-tag">&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">city-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不需要为 CSS、JS 指定类型属性。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./index.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./index.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>元素属性值使用双引号语法。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">"checked"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"'active'+index"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特殊字符引用。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>more&amp;gt;&amp;gt;<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>统一采用两格空格的方式缩进。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"jdc"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每个块状元素独立一行，内联元素可选。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>段落元素与标题元素只能嵌套内联元素。</p>
+<p>不要在 p 标签中还出现 div 这种情况。</p>
+</li>
+<li><p>尽量减少深层嵌套。</p>
+<p>能用一个 div 包裹，就不要再多用一个包裹了。</p>
+</li>
+<li><p>注释内容前后各一个空格字符，注释位于要注释代码的上面，单独占一行。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!-- Comment Text --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码模块与模块之间可以通过增加空行的形式分隔开。</p>
+</li>
+</ol>
+<h2 id="CSS-篇"><a href="#CSS-篇" class="headerlink" title="CSS 篇"></a>CSS 篇</h2><ol>
+<li><p>统一使用展开格式书写样式。</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.jdc</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不使用 ID 选择器。</p>
+</li>
+<li><p>统一使用两格缩进。<br>由于多数项目采用了 less，建议每一个模块用一个总的 class 包裹。</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.main</span> &#123;</span><br><span class="line">  .header &#123;</span><br><span class="line">    <span class="hljs-selector-class">.title</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-class">.logo</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-class">.left-menu</span> &#123;</span><br><span class="line">    .list &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-class">.active</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-class">.content</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-class">.footer</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>空格</p>
+<p>左括号与类名之间一个空格，冒号与属性值之间一个空格。逗号分隔的取值，逗号之后一个空格。这些都可以通过编辑器的代码格式整理功能实现。</p>
+</li>
+<li><p>为单个 css 选择器或新申明开启新行</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.jdc</span>,</span><br><span class="line"><span class="hljs-selector-class">.jdc_logo</span>,</span><br><span class="line"><span class="hljs-selector-class">.jdc_hd</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ff0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-class">.nav</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取值不要带有不必要的 0。不要为 0 指明单位。</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">color</span>: <span class="hljs-selector-tag">rgba</span>(255, 255, 255, 0<span class="hljs-selector-class">.5</span>);</span><br><span class="line"><span class="hljs-selector-tag">margin</span>: 0 10<span class="hljs-selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>顺序。</p>
+<p>布局定位属性：display / position / float / clear / visibility / overflow</p>
+<p>自身属性：width / height / margin / padding / border / background</p>
+<p>文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word</p>
+<p>其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.jdc</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">  <span class="hljs-attribute">float</span>: left;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span> <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">font-family</span>: Arial, <span class="hljs-string">"Helvetica Neue"</span>, Helvetica, sans-serif;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.5);</span><br><span class="line">  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">-o-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">-ms-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>样式重置</p>
+<p>移动端</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="hljs-attribute">-webkit-tap-highlight-color</span>: transparent;</span><br><span class="line">  <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">body</span>,</span><br><span class="line"><span class="hljs-selector-tag">h1</span>,</span><br><span class="line"><span class="hljs-selector-tag">h2</span>,</span><br><span class="line"><span class="hljs-selector-tag">h3</span>,</span><br><span class="line"><span class="hljs-selector-tag">h4</span>,</span><br><span class="line"><span class="hljs-selector-tag">h5</span>,</span><br><span class="line"><span class="hljs-selector-tag">h6</span>,</span><br><span class="line"><span class="hljs-selector-tag">hr</span>,</span><br><span class="line"><span class="hljs-selector-tag">p</span>,</span><br><span class="line"><span class="hljs-selector-tag">blockquote</span>,</span><br><span class="line"><span class="hljs-selector-tag">dl</span>,</span><br><span class="line"><span class="hljs-selector-tag">dt</span>,</span><br><span class="line"><span class="hljs-selector-tag">dd</span>,</span><br><span class="line"><span class="hljs-selector-tag">ul</span>,</span><br><span class="line"><span class="hljs-selector-tag">ol</span>,</span><br><span class="line"><span class="hljs-selector-tag">li</span>,</span><br><span class="line"><span class="hljs-selector-tag">pre</span>,</span><br><span class="line"><span class="hljs-selector-tag">form</span>,</span><br><span class="line"><span class="hljs-selector-tag">fieldset</span>,</span><br><span class="line"><span class="hljs-selector-tag">legend</span>,</span><br><span class="line"><span class="hljs-selector-tag">button</span>,</span><br><span class="line"><span class="hljs-selector-tag">input</span>,</span><br><span class="line"><span class="hljs-selector-tag">textarea</span>,</span><br><span class="line"><span class="hljs-selector-tag">th</span>,</span><br><span class="line"><span class="hljs-selector-tag">td</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">img</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span> none;</span><br><span class="line">  <span class="hljs-attribute">vertical-align</span>: top;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">i</span>,</span><br><span class="line"><span class="hljs-selector-tag">em</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font-style</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">ol</span>,</span><br><span class="line"><span class="hljs-selector-tag">ul</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">input</span>,</span><br><span class="line"><span class="hljs-selector-tag">select</span>,</span><br><span class="line"><span class="hljs-selector-tag">button</span>,</span><br><span class="line"><span class="hljs-selector-tag">h1</span>,</span><br><span class="line"><span class="hljs-selector-tag">h2</span>,</span><br><span class="line"><span class="hljs-selector-tag">h3</span>,</span><br><span class="line"><span class="hljs-selector-tag">h4</span>,</span><br><span class="line"><span class="hljs-selector-tag">h5</span>,</span><br><span class="line"><span class="hljs-selector-tag">h6</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">font-family</span>: inherit;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">table</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border-collapse</span>: collapse;</span><br><span class="line">  <span class="hljs-attribute">border-spacing</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>: none;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;</span><br><span class="line">  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">320px</span>;</span><br><span class="line">  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">640px</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;</span><br><span class="line">  <span class="hljs-attribute">fon-family</span>: -apple-system, Helvetica, sans-serif;</span><br><span class="line">  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;</span><br><span class="line">  <span class="hljs-attribute">-webkit-text-size-adjust</span>: <span class="hljs-number">100%</span> <span class="hljs-meta">!important</span>;</span><br><span class="line">  <span class="hljs-attribute">text-size-adjust</span>: <span class="hljs-number">100%</span> <span class="hljs-meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="text"]</span>,</span><br><span class="line"><span class="hljs-selector-tag">textarea</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">-webkit-appearance</span>: none;</span><br><span class="line">  <span class="hljs-attribute">-moz-appearance</span>: none;</span><br><span class="line">  <span class="hljs-attribute">appearance</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PC 端</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">html</span>,</span><br><span class="line"><span class="hljs-selector-tag">body</span>,</span><br><span class="line"><span class="hljs-selector-tag">div</span>,</span><br><span class="line"><span class="hljs-selector-tag">h1</span>,</span><br><span class="line"><span class="hljs-selector-tag">h2</span>,</span><br><span class="line"><span class="hljs-selector-tag">h3</span>,</span><br><span class="line"><span class="hljs-selector-tag">h4</span>,</span><br><span class="line"><span class="hljs-selector-tag">h5</span>,</span><br><span class="line"><span class="hljs-selector-tag">h6</span>,</span><br><span class="line"><span class="hljs-selector-tag">p</span>,</span><br><span class="line"><span class="hljs-selector-tag">dl</span>,</span><br><span class="line"><span class="hljs-selector-tag">dt</span>,</span><br><span class="line"><span class="hljs-selector-tag">dd</span>,</span><br><span class="line"><span class="hljs-selector-tag">ol</span>,</span><br><span class="line"><span class="hljs-selector-tag">ul</span>,</span><br><span class="line"><span class="hljs-selector-tag">li</span>,</span><br><span class="line"><span class="hljs-selector-tag">fieldset</span>,</span><br><span class="line"><span class="hljs-selector-tag">form</span>,</span><br><span class="line"><span class="hljs-selector-tag">label</span>,</span><br><span class="line"><span class="hljs-selector-tag">input</span>,</span><br><span class="line"><span class="hljs-selector-tag">legend</span>,</span><br><span class="line"><span class="hljs-selector-tag">table</span>,</span><br><span class="line"><span class="hljs-selector-tag">caption</span>,</span><br><span class="line"><span class="hljs-selector-tag">tbody</span>,</span><br><span class="line"><span class="hljs-selector-tag">tfoot</span>,</span><br><span class="line"><span class="hljs-selector-tag">thead</span>,</span><br><span class="line"><span class="hljs-selector-tag">tr</span>,</span><br><span class="line"><span class="hljs-selector-tag">th</span>,</span><br><span class="line"><span class="hljs-selector-tag">td</span>,</span><br><span class="line"><span class="hljs-selector-tag">textarea</span>,</span><br><span class="line"><span class="hljs-selector-tag">article</span>,</span><br><span class="line"><span class="hljs-selector-tag">aside</span>,</span><br><span class="line"><span class="hljs-selector-tag">audio</span>,</span><br><span class="line"><span class="hljs-selector-tag">canvas</span>,</span><br><span class="line"><span class="hljs-selector-tag">figure</span>,</span><br><span class="line"><span class="hljs-selector-tag">footer</span>,</span><br><span class="line"><span class="hljs-selector-tag">header</span>,</span><br><span class="line"><span class="hljs-selector-tag">mark</span>,</span><br><span class="line"><span class="hljs-selector-tag">menu</span>,</span><br><span class="line"><span class="hljs-selector-tag">nav</span>,</span><br><span class="line"><span class="hljs-selector-tag">section</span>,</span><br><span class="line"><span class="hljs-selector-tag">time</span>,</span><br><span class="line"><span class="hljs-selector-tag">video</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">h1</span>,</span><br><span class="line"><span class="hljs-selector-tag">h2</span>,</span><br><span class="line"><span class="hljs-selector-tag">h3</span>,</span><br><span class="line"><span class="hljs-selector-tag">h4</span>,</span><br><span class="line"><span class="hljs-selector-tag">h5</span>,</span><br><span class="line"><span class="hljs-selector-tag">h6</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">article</span>,</span><br><span class="line"><span class="hljs-selector-tag">aside</span>,</span><br><span class="line"><span class="hljs-selector-tag">dialog</span>,</span><br><span class="line"><span class="hljs-selector-tag">figure</span>,</span><br><span class="line"><span class="hljs-selector-tag">footer</span>,</span><br><span class="line"><span class="hljs-selector-tag">header</span>,</span><br><span class="line"><span class="hljs-selector-tag">hgroup</span>,</span><br><span class="line"><span class="hljs-selector-tag">nav</span>,</span><br><span class="line"><span class="hljs-selector-tag">section</span>,</span><br><span class="line"><span class="hljs-selector-tag">blockquote</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">ul</span>,</span><br><span class="line"><span class="hljs-selector-tag">ol</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">img</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span> none;</span><br><span class="line">  <span class="hljs-attribute">vertical-align</span>: top;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">blockquote</span>,</span><br><span class="line"><span class="hljs-selector-tag">q</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">quotes</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:before</span>,</span><br><span class="line"><span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:after</span>,</span><br><span class="line"><span class="hljs-selector-tag">q</span><span class="hljs-selector-pseudo">:before</span>,</span><br><span class="line"><span class="hljs-selector-tag">q</span><span class="hljs-selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">content</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">table</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border-collapse</span>: collapse;</span><br><span class="line">  <span class="hljs-attribute">border-spacing</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">strong</span>,</span><br><span class="line"><span class="hljs-selector-tag">em</span>,</span><br><span class="line"><span class="hljs-selector-tag">i</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font-style</span>: normal;</span><br><span class="line">  <span class="hljs-attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">ins</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">del</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>: line-through;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">mark</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::-ms-clear</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font</span>: <span class="hljs-number">12px</span>/<span class="hljs-number">1.5</span> \<span class="hljs-number">5</span>fae\<span class="hljs-number">8</span>f6f\<span class="hljs-number">96</span>c5\<span class="hljs-number">9</span>ed1, \<span class="hljs-number">5</span>b8b\<span class="hljs-number">4</span>f53, <span class="hljs-string">"Hiragino Sans GB"</span>, STHeiti,</span><br><span class="line">    <span class="hljs-string">"WenQuanYi Micro Hei"</span>, <span class="hljs-string">"Droid Sans Fallback"</span>, SimSun, sans-serif;</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>: none;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="JS-篇"><a href="#JS-篇" class="headerlink" title="JS 篇"></a>JS 篇</h2><ol>
+<li><p>对象</p>
+<p>使用对象方法的简写方式。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> item = &#123;</span><br><span class="line">  job,</span><br><span class="line">  department,</span><br><span class="line">  value: <span class="hljs-number">1</span>,</span><br><span class="line">  addValue(val) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item.value + val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>大括号</p>
+<p>统一判断语句大括号风格。仅有一条执行语句时也要加大括号。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (foo) &#123;</span><br><span class="line">  bar();</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">  baz();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>空格</p>
+<p>在单行代码块中使用空格。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">if</span> (foo) &#123;</span><br><span class="line">  bar = <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>逗号后面使用空格，逗号前面不加空格。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> foo = <span class="hljs-number">1</span>,</span><br><span class="line">  bar = <span class="hljs-number">2</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> list = [</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="hljs-number">1</span>,</span><br><span class="line">    name: <span class="hljs-string">"张三"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="hljs-number">2</span>,</span><br><span class="line">    name: <span class="hljs-string">"李四"</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>对象字面量的键和值之间不能存在空格，且要求对象字面量的冒号和值之间存在一个空格</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123; <span class="hljs-attr">foo</span>: <span class="hljs-string">"haha"</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>代码块、函数括号前后都要加空格。函数使用时不要空格</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (a) &#123;</span><br><span class="line">  b();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">x</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func();</span><br></pre></td></tr></table></figure>
+
+<p>操作符前后都需要添加空格。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> sum = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> temp = isTrue ? <span class="hljs-string">"goog"</span> : <span class="hljs-string">"bad"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串</p>
+<p>字符串统一使用单引号的形式 ‘’。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> temp = <span class="hljs-string">"hello world"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> describe = <span class="hljs-string">'&lt;div class="active"&gt;&lt;/div&gt;'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注释</p>
+<p>单行注释。独立一行，不要写在代码后边。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 学生人数</span></span><br><span class="line"><span class="hljs-keyword">let</span> studentNum = <span class="hljs-number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 参数列表</span></span><br><span class="line"><span class="hljs-keyword">let</span> options = &#123;</span><br><span class="line">  <span class="hljs-comment">// 当前是第几页</span></span><br><span class="line">  pageNum: <span class="hljs-number">1</span>,</span><br><span class="line">  <span class="hljs-comment">// 页大小</span></span><br><span class="line">  pageSize: <span class="hljs-number">10</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>多行注释。只有一行时不要用多行注释。尽量使用单行注释。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 这里是多行注释</span></span><br><span class="line"><span class="hljs-comment"> * 这里是多行注释</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>文件注释。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @Author: chenjp</span></span><br><span class="line"><span class="hljs-comment"> * @Date: 2017-12-22 16:10:36</span></span><br><span class="line"><span class="hljs-comment"> * @Last Modified by: chenjp</span></span><br><span class="line"><span class="hljs-comment"> * @Last Modified time: 2017-12-22 16:12:20</span></span><br><span class="line"><span class="hljs-comment"> * @describe: 首页模板</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>方法注释</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 函数描述</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string&#125; p1 参数1的说明</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string&#125; p2 参数2的说明，比较长</span></span><br><span class="line"><span class="hljs-comment"> *     那就换行了.</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number=&#125; p3 参数3的说明（可选）</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;Object&#125; 返回值描述</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名</p>
+<p>驼峰式命名。变量名用名词。方法名动词在前名词在后。构造函数首字母大写。</p>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>强制两个缩进。</li>
+<li>强制不使用分号。</li>
+<li>合理使用 const、let、var。</li>
+<li>使用行尾逗号。禁止拖尾逗号。</li>
+<li>空白行分离代码逻辑。</li>
+<li>禁止使用链式赋值。</li>
+<li>减少 dom 操作。</li>
+<li>catch 进行统一处理。</li>
+<li>避免直接操作 prototype。</li>
+<li>不要使用 eval()、with() {}。</li>
+<li>不要修改内置对象，如 Object 和 Array。</li>
+</ul>
+</li>
+</ol>
+<h2 id="再啰嗦几句"><a href="#再啰嗦几句" class="headerlink" title="再啰嗦几句"></a>再啰嗦几句</h2><ol>
+<li>JPEG 图的时候，质量一般控制在 60。 图片大小一般控制在 200KB 以内。</li>
+<li>减少请求数，使用雪碧图，字体图标等。</li>
+<li>文件、文件夹命名统一小写。</li>
+<li>自己的文件不要提交。例如编辑器配置文件不要提交。</li>
+<li>代码中没有 debugger 断点。大篇幅的日志。</li>
+<li>控制台没有报错。</li>
+<li>不存在样式问题。</li>
+<li>是否遵守设计稿的要求。包括间距，大小，颜色等等。</li>
+<li>兼容性考虑，是否兼容要求的浏览器版本。</li>
+<li>关于项目结构建议如下图。文件很多时请使用文件夹区分类别。</li>
+</ol>
+<p><img src="structure.jpg" alt="项目结构"></p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>注释的数据类型种类</p>
+<p><img src="remark.jpg" alt="注释的数据类型种类"></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/规范/">规范</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay-qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/weixin-qrcode.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/01/13/2018/01/编码规范之eslint/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">编码规范之eslint</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/01/12/2018/01/实现一个简单的MVVM框架/">
+                <span class="level-item">实现一个简单的MVVM框架</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'fe2e597ca479da1f06fa78ccfccbeef0',
+		owner: '123sky',
+		repo: 'blog',
+		oauth: {
+			client_id: 'f869a0bd3d2498f1db9f',
+			client_secret: 'b527272626a86eac38460c0a75d49055ed7f6d9f',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/avatar.png" alt="Chen Jianpeng">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Chen Jianpeng
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Front End Engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        30
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/123sky" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/123sky">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="http://weibo.com/3048860577">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Zhihu" href="https://www.zhihu.com/people/ke-jing-ming-68">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#HTML-篇">
+        <span class="has-mr-6">1</span>
+        <span>HTML 篇</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS-篇">
+        <span class="has-mr-6">2</span>
+        <span>CSS 篇</span>
+        </a></li><li>
+        <a class="is-flex" href="#JS-篇">
+        <span class="has-mr-6">3</span>
+        <span>JS 篇</span>
+        </a></li><li>
+        <a class="is-flex" href="#再啰嗦几句">
+        <span class="has-mr-6">4</span>
+        <span>再啰嗦几句</span>
+        </a></li><li>
+        <a class="is-flex" href="#附录">
+        <span class="has-mr-6">5</span>
+        <span>附录</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/123sky" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">123sky</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/基础系列/">
+            <span class="level-start">
+                <span class="level-item">基础系列</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/基础系列/css篇/">
+            <span class="level-start">
+                <span class="level-item">css篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/nodejs/">
+            <span class="level-start">
+                <span class="level-item">nodejs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/基础系列/前端框架篇/">
+            <span class="level-start">
+                <span class="level-item">前端框架篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/">
+            <span class="level-start">
+                <span class="level-item">深入基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/深入基础/js篇/">
+            <span class="level-start">
+                <span class="level-item">js篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/vue篇/">
+            <span class="level-start">
+                <span class="level-item">vue篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/深入基础/规范篇/">
+            <span class="level-start">
+                <span class="level-item">规范篇</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/阶段总结/">
+            <span class="level-start">
+                <span class="level-item">阶段总结</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/阶段总结/项目开发/">
+            <span class="level-start">
+                <span class="level-item">项目开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/js/" style="font-size: 12px;">js</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/vue/" style="font-size: 16px;">vue</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/组件/" style="font-size: 12px;">组件</a> <a href="/tags/规范/" style="font-size: 12px;">规范</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/default.jpg" alt="界面设计器开发思路">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-10T03:17:29.000Z">2019-10-10</time></div>
+                    <a href="/2019/10/10/2019/10/界面设计器开发思路/" class="title has-link-black-ter is-size-6 has-text-weight-normal">界面设计器开发思路</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/阶段总结/">阶段总结</a> / <a class="has-link-grey -link" href="/categories/阶段总结/项目开发/">项目开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-柯里化 currying">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-柯里化/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-柯里化 currying</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-异步">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-异步/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-异步</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-原型">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-原型/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-原型</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/深入基础.jpg" alt="深入基础-js篇-作用域与闭包">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T00:47:26.000Z">2019-09-15</time></div>
+                    <a href="/2019/09/15/2019/09/深入基础-js篇-作用域与闭包/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深入基础-js篇-作用域与闭包</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/基础系列/">基础系列</a> / <a class="has-link-grey -link" href="/categories/基础系列/js篇/">js篇</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/eslint/">
+                        <span class="tag">eslint</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/express/">
+                        <span class="tag">express</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/js/">
+                        <span class="tag">js</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/koa/">
+                        <span class="tag">koa</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nodejs/">
+                        <span class="tag">nodejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/性能/">
+                        <span class="tag">性能</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/组件/">
+                        <span class="tag">组件</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/规范/">
+                        <span class="tag">规范</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/面试/">
+                        <span class="tag">面试</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="前端开发规范" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Chen Jianpeng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
